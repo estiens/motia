@@ -4,12 +4,12 @@
  * 
  * Consider adding this file to .prettierignore and eslint ignore.
  */
-import { EventHandler, ApiRouteHandler, ApiResponse, IStateStream } from 'motia'
+import { EventHandler, ApiRouteHandler, ApiResponse, MotiaStream } from 'motia'
 
 declare module 'motia' {
   interface FlowContextStateStreams {
-    'message_python': IStateStream<{ message: string }>
-    'message': IStateStream<{ message: string; from: string; status: string }>
+    'message_python': MotiaStream<{ message: string }>
+    'message': MotiaStream<{ message: string; from: 'user' | 'assistant'; status: 'created' | 'pending' | 'completed' }>
   }
 
   type Handlers = {
